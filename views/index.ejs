@@ -1,0 +1,191 @@
+<div class="success">
+    <% if(flash.success != '') { %>
+        <div class="alert alert-success text-center ">
+            <%= flash.success %>
+        </div>
+    <% } %>
+</div>
+
+<div class="error">
+    <% if(flash.error != '') { %>
+        <div class="alert alert-danger text-center">
+            <%= flash.error %>
+        </div>
+    <% } %>
+</div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/fontawesome.min.css">
+
+    <style>
+        * {
+  box-sizing: border-box;
+  font-family: "Merriweather Sans", sans-serif;
+}
+
+body {
+  background-color: #b0dbee;
+}
+body #form {
+  color: white;
+  background-color: #009edf;
+  border-radius: 5px;
+  width: 400px;
+  padding: 40px;
+  margin: 150px auto;
+  -webkit-box-shadow: -1px 3px 18px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: -1px 3px 18px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 3px 18px 0px rgba(0, 0, 0, 0.75);
+}
+body #form p {
+  font-size: 0.9em;
+}
+body #form button {
+  width: 100%;
+  text-align: center;
+  color: grey;
+  margin-top: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+body #form .form-group {
+  margin: 15px auto;
+}
+body #form .form-group label {
+  font-weight: bold;
+  font-size: 0.9em;
+}
+body #form .form-group .input-group {
+  border-radius: 5px;
+  -webkit-box-shadow: -1px 3px 18px 0px rgba(0, 0, 0, 0.35);
+  -moz-box-shadow: -1px 3px 18px 0px rgba(0, 0, 0, 0.35);
+  box-shadow: -1px 3px 18px 0px rgba(0, 0, 0, 0.35);
+}
+body #form .form-group .input-group .input-group-addon {
+  border: none;
+  border-right: 1px solid rgba(0, 0, 0, 0.2);
+}
+body #form .form-group .input-group input {
+  padding-left: 10px;
+}
+body #form .form-group .input-group i {
+  color: #009edf;
+}
+body #form .form-group input {
+  padding: 3px;
+  width: 100%;
+  border: none;
+  border-radius: 0 5px 5px 0;
+}
+ul{
+    column-count: 2;
+    column-gap: 10px;
+    list-style: none;
+}
+input[type='checkbox']{
+    width: auto !important;
+}
+    </style>
+</head>
+<body>
+    <form id="form" action="/insertData" method="post" enctype="multipart/form-data">     
+        <div class="form-group">
+            <label for="grid">Your Grid</label>
+            <br />
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i> </div>
+                <input type="number" id="name" name="grid" placeholder="Enter Your Grid" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="name">Your Name</label>
+            <br />
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i> </div>
+                <input type="text" id="name" name="name" placeholder="Enter Your Name" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+           <label for="email">Your Email</label>
+           <br />
+           <div class="input-group">
+               <div class="input-group-addon"><i class="fa fa-envelope" aria-hidden="true"> </i></div>
+               <input type="email" id="email" name="email" placeholder="Enter Your Email" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Your Password</label>
+            <br />
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa fa-lock" aria-hidden="true"></i> </div>
+                <input type="password" id="password" name="password" placeholder="Enter Your Password" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="phone">Your Mobile No.</label>
+            <br />
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa-solid fa-phone" aria-hidden="true"></i> </div>
+                <input type="text" id="phone" name="phone" placeholder="Enter Your Mobile No." />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="course">Select Course</label>
+            <br />
+            <div>
+                <ul>
+                    <%
+                    
+                    let arr = ["HTML","CSS","Boostrap","Javascript","Node Js","Photoshop","Figma","Android","Flutter","Java","PHP","C++"];
+                    
+                    for(i in arr)
+                    {
+                        
+                        %>
+                        
+                        <li>
+                            <input type="checkbox" name="course" value="<%= arr[i] %>">&nbsp;<%= arr[i] %>
+                        </li>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="fees">Fees</label>
+            <br />
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa-solid fa-indian-rupee-sign" aria-hidden="true"></i> </div>
+                <input type="number" id="fees" name="fees" placeholder="Enter Fees" />
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="avatar">Upload Image</label>
+            <br />
+            <div class="input-group">
+                <div class="input-group-addon"><i class="fa-solid fa-image" aria-hidden="true"></i> </div>
+                <input type="file" id="avatar" name="avatar" />
+            </div>
+        </div>
+        
+        <button type="submit" class="btn btn-info text-white">Register</button>
+        <a href="/view" class="btn btn-info text-white w-100 mt-3">View Data</a>
+    </form>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js"></script>
+<script src="../assests/settimeout.js"></script>
+</html>
